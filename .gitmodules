@@ -1,0 +1,12 @@
+[submodule "plugins/external/zzzfx"]
+	path = plugins/external/zzzfx
+	url = https://github.com/zzzEffects/zzzFX.git
+[submodule "plugins/external/natron-plugins"]
+	path = plugins/external/natron-plugins
+	url = https://github.com/NatronGitHub/natron-plugins.git
+[submodule "plugins/external/openfx-misc"]
+	path = plugins/external/openfx-misc
+	url = https://github.com/NatronGitHub/openfx-misc.git
+[submodule "plugins/external/effectcraft-fork"]
+	path = plugins/external/effectcraft-fork
+	url = https://github.com/Swaggerx3/EffectCraft.git

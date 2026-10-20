@@ -133,6 +133,29 @@ It uses only After Effects' documented scripting API (`comp.selectedProperties`,
 `KeyframeEase`, `setInterpolationTypeAtKey`, `app.settings`, ScriptUI), so it is also a worked
 example of a keyframe tool.
 
+## External effects and related projects
+
+The source repositories are included under [`plugins/external/`](../plugins/external/) as Git submodules, so
+their complete source trees are checked out alongside EffectCraft Lite. Their files remain
+separate repositories: they are not linked into the Rust workspace, compiled, or bundled into the
+application. EffectCraft does not host the After Effects or OpenFX plug-in interfaces; its effect
+plug-ins use the WebAssembly or Rust API described below. Do not copy files from these projects
+into EffectCraft's `Plug-ins` folder expecting them to load. Clone the repository with
+`--recurse-submodules`, or initialize all source trees after cloning with
+`git submodule update --init --recursive`.
+
+| Project | What it is | Compatibility and licence notes |
+|---|---|---|
+| [zzzFX](https://github.com/zzzEffects/zzzFX) (`plugins/external/zzzfx`; [releases](https://github.com/zzzEffects/zzzFX/releases)) | Video effects targeting After Effects/Premiere and OpenFX hosts, among others. | Not loadable by EffectCraft directly. The project is GPL-3.0-or-later; its code remains isolated in its submodule and is not compiled or bundled. Check its project page for current build instructions and release availability. |
+| [Natron Community Plugins](https://github.com/NatronGitHub/natron-plugins) (`plugins/external/natron-plugins`; [source archive](https://github.com/NatronGitHub/natron-plugins/archive/refs/heads/master.zip)) | Community plugins and resources for Natron, including PyPlugs and shaders. | Natron-specific APIs and resources are not EffectCraft plug-ins. Licensing varies by component; verify each item's licence before reuse or redistribution. The repository is included as a separate submodule, not vendored into the application. |
+| [OpenFX-Misc](https://github.com/NatronGitHub/openfx-misc) (`plugins/external/openfx-misc`; [source archive](https://github.com/NatronGitHub/openfx-misc/archive/refs/heads/master.zip)) | C/C++ OpenFX plug-ins, primarily for Natron and other OpenFX hosts. | Not loadable by EffectCraft directly. The project is GPL-2.0-or-later; its code remains isolated in its submodule and is not compiled or bundled. |
+| [Swaggerx3/EffectCraft](https://github.com/Swaggerx3/EffectCraft) (`plugins/external/effectcraft-fork`; [releases](https://github.com/Swaggerx3/EffectCraft/releases)) | A fork of the standalone EffectCraft application, not an effects plug-in. | It cannot be installed as an effect inside this application. It remains a separate source submodule and is not built as part of Lite. For EffectCraft application downloads, prefer the [official upstream releases](https://github.com/storytold/effectcraft/releases). |
+
+The submodules pin each external source tree to a specific commit; update them explicitly when you
+intend to track upstream changes. Their presence does not grant additional rights to redistribute
+or incorporate their code. See [AGENTS.md](../AGENTS.md) for this repository's code and licensing
+rules, and the [plug-in contract](#the-contract) for how to create a compatible EffectCraft effect.
+
 ## Effect plug-ins
 
 EffectCraft loads third-party effects through a small, versioned plug-in API (**API version 1**).

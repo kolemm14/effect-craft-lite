@@ -128,6 +128,13 @@ stylize (Glow, CC Glass…), **time** (Echo, Posterize Time, Timewarp, Time Disp
 controls. All nine **Layer Styles** (Drop Shadow, Inner/Outer Glow, Bevel and Emboss, Satin,
 overlays, Stroke) with Global Light. Preview plays audio in sync, with meters and waveforms.
 
+The complete source trees for several external effects projects are checked out as Git submodules
+under `plugins/external/`; they remain separate projects and are not compiled into EffectCraft.
+Clone with `--recurse-submodules` (or run `git submodule update --init --recursive`) to fetch them.
+See [external effects and related projects](docs/plugins.md#external-effects-and-related-projects)
+for compatibility and licensing notes. After Effects and OpenFX plug-ins are not directly loadable
+by EffectCraft.
+
 <p align="center">
   <img src="docs/images/effectcraft-effects.png" alt="A CC Particle World burst with Glow, and the Effect Controls panel listing the particle system's parameters" width="100%">
 </p>
